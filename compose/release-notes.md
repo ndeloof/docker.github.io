@@ -8,6 +8,32 @@ redirect_from:
 ---
 {% include compose-eol.md %}
 
+## 2.17.3
+{% include release-date.html date="2023-04-20" %}
+### Update
+- Bump Go to 1.20.3
+- Dependencies upgrade: bump docker version to 23.0.4 [CVE-2023-28840](https://github.com/advisories/GHSA-232p-vwff-86mp)
+- Dependencies upgrade: bump compose-go to v1.13.4
+
+### Bug fixes and enhancements
+- Add dry-run support to run command. Pull Request [compose#10404](https://github.com/docker/compose/issues/10404){:
+  target="_blank" rel="noopener" class="_"}
+- Add dry-run support to create command. Pull Request [compose#10413](https://github.com/docker/compose/issues/10413){:
+  target="_blank" rel="noopener" class="_"}
+- Add dry-run support to down command. Pull Request [compose#10444](https://github.com/docker/compose/issues/10444){:
+  target="_blank" rel="noopener" class="_"}
+- Better support `NO_COLOR` by disabling colors, not ANSI TUI. Pull Request [compose#10434](https://github.com/docker/compose/issues/10434){:
+  target="_blank" rel="noopener" class="_"}
+- Workaround race condition in ContainerList. Pull Request [compose#10409](https://github.com/docker/compose/issues/10409){:
+  target="_blank" rel="noopener" class="_"}
+- Prevent panic using classic builder. Pull Request [compose#10423](https://github.com/docker/compose/issues/10423){:
+  target="_blank" rel="noopener" class="_"}
+- Restore `--timeout` flag renamed by mistake. Pull Request [compose#10432](https://github.com/docker/compose/issues/10432){:
+  target="_blank" rel="noopener" class="_"}
+- Fix `--ansi` flag values (auto|never|always). Pull Request [compose#10442](https://github.com/docker/compose/issues/10442){:
+  target="_blank" rel="noopener" class="_"}
+
+
 ## 2.17.2
 {% include release-date.html date="2023-03-26" %}
 ### Update
