@@ -97,7 +97,6 @@ Host *.sbx
     UserKnownHostsFile "~/.ssh/sbx_known_hosts"
     KnownHostsCommand "sbx" ssh known-hosts %H
     StrictHostKeyChecking yes
-    SendEnv *
 # <<< docker sandboxes (managed) <<<
 ```
 
@@ -105,11 +104,11 @@ You don't edit this block by hand. The `User _default_user_` sentinel tells the
 daemon to log you in as the sandbox image's default user, so your host username
 is never sent.
 
-`SendEnv *` offers host environment variables to the daemon, but the daemon
-accepts only variables in its `ssh.acceptEnv` allowlist. Execution-sensitive
-variables such as `PATH`, `LD_*`, and `NODE_OPTIONS` are always blocked, even
-if added to the allowlist. Accepted values apply only to the SSH session and
-aren't stored in the sandbox configuration.
+Host environment variables are never forwarded into the sandbox. The daemon
+acknowledges SSH environment requests but discards them, so `SendEnv` or
+`SetEnv` entries in your own SSH configuration are harmless: the values never
+reach sandbox processes. Sessions start with a sandbox-controlled environment;
+the daemon sets only `SHELL` and `TERM`.
 
 The `*.sbx` wildcard maps sandbox hostnames to the sandbox daemon, but it
 doesn't add individual sandbox names to application host pickers. Enter the
